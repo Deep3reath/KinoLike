@@ -18,7 +18,7 @@ class FilmsSearch extends Films
     {
         return [
             [['id'], 'integer'],
-            [['title', 'description', 'date', 'country', 'img', 'operator', 'screenwriter', 'producer'], 'safe'],
+            [['title', 'description', 'date', 'country', 'img', 'operator', 'screenwriter', 'producer', 'genres.genres.title'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class FilmsSearch extends Films
     public function search($params)
     {
         $query = Films::find();
-
+        $query->joinWith('genres');
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
@@ -55,6 +55,10 @@ class FilmsSearch extends Films
             // $query->where('0=1');
             return $dataProvider;
         }
+        $dataProvider->sort->attributes['genres.genres.title'] = [
+            'asc' => [Genre::tableName() . '.title' => SORT_ASC],
+            'desc' => [Genre::tableName() . '.title' => SORT_DESC],
+        ];
 
         // grid filtering conditions
         $query->andFilterWhere([
@@ -68,8 +72,16 @@ class FilmsSearch extends Films
             ->andFilterWhere(['like', 'img', $this->img])
             ->andFilterWhere(['like', 'operator', $this->operator])
             ->andFilterWhere(['like', 'screenwriter', $this->screenwriter])
-            ->andFilterWhere(['like', 'producer', $this->producer]);
+            ->andFilterWhere(['like', 'producer', $this->producer])
+            ->andFilterWhere(['like', Genre::tableName().'.title', $this->getAttribute('genres.genres.title')]);
 
         return $dataProvider;
+    }
+    public function attributes()
+    {
+        // делаем поле зависимости доступным для поиска
+        return array_merge(parent::attributes(), [
+            'genres.genres.title'
+        ]);
     }
 }

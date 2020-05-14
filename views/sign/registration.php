@@ -18,8 +18,8 @@ use yii\widgets\ActiveForm;
         <?= $form->field($model, 'email') ?>
         <?= $form->field($model, 'name') ?>
         <?= $form->field($model, 'username') ?>
-        <?= $form->field($model, 'password') ?>
-        <?= $form->field($model, 'file')->fileInput() ?>
+        <?= $form->field($model, 'password')->input('password') ?>
+        <?= $form->field($model, 'avatar')->fileInput(['required'=>true]) ?>
 
         <div class="form-group">
             <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>

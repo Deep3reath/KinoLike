@@ -1,22 +1,18 @@
 <?php
 
-namespace app\modules\administration\controllers;
+namespace app\modules\moderation\controllers;
 
-use app\models\Roles;
 use Yii;
-use app\models\User;
-use app\models\UserSearch;
-use yii\db\ActiveRecord;
-use yii\rbac\Role;
+use app\models\Genres;
+use app\models\GenresSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\UploadedFile;
 
 /**
- * UsersController implements the CRUD actions for User model.
+ * GenresController implements the CRUD actions for Genres model.
  */
-class UsersController extends Controller
+class GenresController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -34,24 +30,22 @@ class UsersController extends Controller
     }
 
     /**
-     * Lists all User models.
+     * Lists all Genres models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new UserSearch();
+        $searchModel = new GenresSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'roles' => new Roles(),
-            'user' => new User(),
         ]);
     }
 
     /**
-     * Displays a single User model.
+     * Displays a single Genres model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -60,66 +54,53 @@ class UsersController extends Controller
     {
         return $this->render('view', [
             'model' => $this->findModel($id),
-            'users' => new User(),
         ]);
     }
 
     /**
-     * Creates a new User model.
+     * Creates a new Genres model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new \app\models\User();
+        $model = new Genres();
 
-        if ($model->load(Yii::$app->request->post())) {
-            $model->file = UploadedFile::getInstance($model, 'file');
-            $idImg = mt_rand(1, 1000);
-            $model->avatar = 'web/upload/' .$idImg . md5($model->file->name) . '.' .$model->file->extension;
-            $model->save();
-
-            if(!empty($model->file)){
-                $model->file->saveAs("upload/". $idImg . md5($model->file->name) . '.' .$model->file->extension);
-            }
-
-            return $this->redirect('/administration/users');
-        }
-        return $this->render('create', [
-            'model' => $model,
-            'users' => new User(),
-        ]);
-    }
-
-    /**
-     * Updates an existing User model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionChangeRole()
-    {
-
-        if ($request = Yii::$app->request->post() and $model = $this->findModel($request['User']['id'])) {
-            $model->id_role = ($request['User']['id_role']);
-            $model->save(false  );
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
-        return $this->render('view', [
+        return $this->render('create', [
             'model' => $model,
-            'users' => new User()
         ]);
     }
 
     /**
-     * Deletes an existing User model.
+     * Updates an existing Genres model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionUpdate($id)
+    {
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+
+        return $this->render('update', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * Deletes an existing Genres model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
-     * @throws \Throwable
-     * @throws \yii\db\StaleObjectException
      */
     public function actionDelete($id)
     {
@@ -129,15 +110,15 @@ class UsersController extends Controller
     }
 
     /**
-     * Finds the User model based on its primary key value.
+     * Finds the Genres model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return User the loaded model
+     * @return Genres the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = User::findOne($id)) !== null) {
+        if (($model = Genres::findOne($id)) !== null) {
             return $model;
         }
 

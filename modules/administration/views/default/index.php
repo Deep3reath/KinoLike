@@ -15,6 +15,5 @@ use yii\helpers\Html;
         <?= Html::a('Жанры', '/administration/genres', ['class' => 'btn btn-primary']); ?>
         <?= Html::a('Пользователи', '/administration/users', ['class' => 'btn btn-primary']); ?>
         <?= Html::a('Комментарии', '/administration/comments', ['class' => 'btn btn-primary']); ?>
-        <?= Html::a('Роли', '/administration/roles', ['class' => 'btn btn-primary']); ?>
 </div>
 </div>

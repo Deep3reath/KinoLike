@@ -16,6 +16,12 @@ $config = [
         'administration' => [
             'class' => 'app\modules\administration\Module',
         ],
+        'moderation' => [
+            'class' => 'app\modules\moderation\Module',
+        ],
+        'profile' => [
+            'class' => 'app\modules\profile\Module',
+        ],
     ],
     'language' => 'ru',
     'components' => [

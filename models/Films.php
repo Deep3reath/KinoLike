@@ -41,8 +41,9 @@ class Films extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'description', 'country', 'img', 'operator', 'screenwriter', 'producer'], 'string'],
-            [['file'], 'file', 'skipOnEmpty' => false, 'extensions' => ['jpg', 'png']],
+            [['title', 'description', 'country', 'img', 'operator', 'screenwriter', 'producer'], 'string', 'min' => 2],
+            [['file'], 'file', 'skipOnEmpty' => false, 'extensions' => ['jpg', 'png', 'jpeg']],
+            [['genres'], 'required'],
             #[['genre'], 'integer'],
             [['date'], 'safe'],
         ];
@@ -55,17 +56,20 @@ class Films extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'description' => 'Description',
-            'genre' => 'Genre',
-            'date' => 'Date',
-            'country' => 'Country',
-            'img' => 'Img',
-            'operator' => 'Operator',
-            'screenwriter' => 'Screenwriter',
-            'producer' => 'Producer',
+            'title' => 'Название',
+            'description' => 'Описание',
+            'genre' => 'Жанр',
+            'date' => 'Дата выхода',
+            'country' => 'Страна',
+            'img' => 'Превью',
+            'operator' => 'Оператор',
+            'screenwriter' => 'Сценарист',
+            'producer' => 'Продюсер',
+            'genres' => 'Жанры'
         ];
     }
+
+
 
     /**
      * Gets query for [[Comments]].

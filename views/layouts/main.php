@@ -53,10 +53,10 @@ AppAsset::register($this);
         array_push($items, ['label' => 'Панель Администратора', 'url' => ['/administration']]);
         array_push($items, $logout);
     } elseif (Yii::$app->user->identity->id_role == 2) {
-        array_push($items, ['label' => 'Панель модератора', 'url' => ['/sign/moderation']]);
+        array_push($items, ['label' => 'Панель модератора', 'url' => ['/moderation']]);
         array_push($items, $logout);
     } else {
-        array_push($items, ['label' => 'Profile', 'url' => ['/sign/profile']]);
+        array_push($items, ['label' => 'Profile', 'url' => ['/profile']]);
         array_push($items, $logout);
     }
     NavBar::begin([

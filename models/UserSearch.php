@@ -5,6 +5,7 @@ namespace app\models;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\User;
+use yii\rbac\Role;
 
 /**
  * UserSearch represents the model behind the search form of `app\models\User`.
@@ -18,7 +19,7 @@ class UserSearch extends User
     {
         return [
             [['id', 'id_role'], 'integer'],
-            [['email', 'name', 'username', 'password', 'avatar'], 'safe'],
+            [['email', 'name', 'username', 'password', 'avatar', 'role.role'], 'safe'],
         ];
     }
 
@@ -41,7 +42,7 @@ class UserSearch extends User
     public function search($params)
     {
         $query = User::find();
-
+        $query->joinWith('role');
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
@@ -55,6 +56,10 @@ class UserSearch extends User
             // $query->where('0=1');
             return $dataProvider;
         }
+        $dataProvider->sort->attributes['role.role'] = [
+            'asc' => [Roles::tableName() . '.role' => SORT_ASC],
+            'desc' => [Roles::tableName() . '.role' => SORT_DESC],
+        ];
 
         // grid filtering conditions
         $query->andFilterWhere([
@@ -66,8 +71,16 @@ class UserSearch extends User
             ->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'username', $this->username])
             ->andFilterWhere(['like', 'password', $this->password])
-            ->andFilterWhere(['like', 'avatar', $this->avatar]);
+            ->andFilterWhere(['like', 'avatar', $this->avatar])
+            ->andFilterWhere(['like', Roles::tableName().'.role', $this->getAttribute('role.role')]);
 
         return $dataProvider;
+    }
+    public function attributes()
+    {
+        // делаем поле зависимости доступным для поиска
+        return array_merge(parent::attributes(), [
+            'role.role'
+        ]);
     }
 }

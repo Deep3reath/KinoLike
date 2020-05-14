@@ -26,7 +26,6 @@ use yii\web\IdentityInterface;
  */
 class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
-    public $file;
     /**
      * @var mixed|null
      */
@@ -50,11 +49,11 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['email', 'name', 'username', 'password', 'avatar'], 'required'],
-            [['avatar'], 'string', 'max' => 60],
+            [['email', 'name', 'username', 'password'], 'required'],
+//            [['avatar'], 'string', 'max' => 60],
             [['username', 'email'], 'unique'],
             [['name'], 'match', 'pattern' => '/^[а-яА-ЯёЁ ]+$/u'],
-            [['file'], 'file', 'skipOnEmpty' => false, 'extensions' => ['jpg', 'png']],
+            [['avatar'], 'file', 'skipOnEmpty' => true, 'extensions' => ['jpg', 'png', 'jpeg']],
             [['email'], 'email'],
             [['username'], 'string','max' => 31],
             [['password'], 'string', 'max' => 63],
@@ -193,7 +192,6 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             $model->find()
             ->join('JOIN', 'user')
             ->all() ;
-        // Выбираем только те категории, у которых есть дочерние категории
     }
 
     public static function findByUsername($username)

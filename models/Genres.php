@@ -39,7 +39,7 @@ class Genres extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
+            'title' => 'Название',
         ];
     }
 
@@ -52,4 +52,13 @@ class Genres extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Genre::className(), ['id_genres' => 'id']);
     }
+
+
+    public static function getGenresList($id_film = null)
+    {
+        $model = new Genres();
+        return $model->find()
+                ->all() ;
+    }
+
 }

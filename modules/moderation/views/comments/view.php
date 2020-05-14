@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Genres */
+/* @var $model app\models\Comments */
 
-$this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Genres', 'url' => ['index']];
+$this->title = $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Comments', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="genres-view">
+<div class="comments-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -29,7 +29,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'title:ntext',
+            'id',
+            'text',
+            'date',
+            'review',
+            'id_user',
+            'id_film',
         ],
     ]) ?>
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\administration\controllers;
+namespace app\modules\moderation\controllers;
 
 use app\models\Genre;
 use app\models\Genres;

@@ -3,6 +3,8 @@
 namespace app\controllers;
 
 use app\models\LoginForm;
+use Imagine\Image\Box;
+use Imagine\Imagick\Image;
 use Yii;
 use app\models\User;
 use app\models\UserSearch;
@@ -78,25 +80,26 @@ class SignController extends Controller
             'model' => $model,
         ]);
     }
+
     public function actionRegistration()
     {
-        $model = new \app\models\User();
-
+        $model = new User();
         if ($model->load(Yii::$app->request->post())) {
-            $model->file = UploadedFile::getInstance($model, 'file');
-            $idImg = mt_rand(1, 1000);
-            $model->avatar = 'web/upload/' .$idImg . md5($model->file->name) . '.' .$model->file->extension;
+            $model->avatar = UploadedFile::getInstance($model, 'avatar');
+            $model->avatar->name = date('dm'). md5($model->avatar->baseName) . '.' . $model->avatar->extension;
             $model->password = md5($model->password);
-            $model->save();
-            if(!empty($model->file)){
-                $model->file->saveAs("upload/". $idImg . md5($model->file->name) . '.' .$model->file->extension);
+            if ($model->save()) {
+                if ($model->avatar) {
+                    $model->avatar->saveAs('upload/avatars/'. $model->avatar->name);
+                };
             }
-
-            return $this->redirect('authentication');
+            return $this->redirect('/site');
         }
+
         return $this->render('registration', [
             'model' => $model,
         ]);
+
     }
 
     /**
