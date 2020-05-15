@@ -32,23 +32,21 @@ AppAsset::register($this);
             'class' => 'navbar-nav navbar-right'
     ];
     $items = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
+        ['label' => 'Главная', 'url' => ['/site/index']],
     ];
     if (!Yii::$app->user->isGuest):
     $logout = '<li>'
         . Html::beginForm(['/sign/logout'], 'post')
         . Html::submitButton(
-            'Logout (' . Yii::$app->user->identity->username . ')',
-            ['class' => 'btn btn-link logout']
+            'Выйти',
+            ['class' => 'btn btn-like logout']
         )
         . Html::endForm()
         . '</li>';
     endif;
     if (Yii::$app->user->isGuest) {
-        array_push($items, ['label' => 'SignUp', 'url' => ['/sign/registration']]);
-        array_push($items, ['label' => 'SignIn', 'url' => ['/sign/authentication']]);
+        array_push($items, ['label' => 'Регистрация', 'url' => ['/sign/registration']]);
+        array_push($items, ['label' => 'Авторизация', 'url' => ['/sign/authentication']]);
     } elseif (Yii::$app->user->identity->id_role == 1) {
         array_push($items, ['label' => 'Панель Администратора', 'url' => ['/administration']]);
         array_push($items, $logout);
@@ -56,14 +54,14 @@ AppAsset::register($this);
         array_push($items, ['label' => 'Панель модератора', 'url' => ['/moderation']]);
         array_push($items, $logout);
     } else {
-        array_push($items, ['label' => 'Profile', 'url' => ['/profile']]);
+        array_push($items, ['label' => 'Профиль', 'url' => ['/profile']]);
         array_push($items, $logout);
     }
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
+        'brandLabel' => Html::img('@web/assets/site/logotype.svg', ['class'=> 'logotype','alt'=>Yii::$app->name]),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
+            'class' => 'navbar-inverse navbar-fixed-top  header-container',
         ],
     ]);
     echo Nav::widget([
@@ -74,7 +72,7 @@ AppAsset::register($this);
     NavBar::end();
     ?>
 
-    <div class="container">
+    <div class="container container-main">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
@@ -84,7 +82,7 @@ AppAsset::register($this);
 </div>
 
 <footer class="footer">
-    <div class="container">
+    <div class="container ">
         <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
 
         <p class="pull-right"><?= Yii::powered() ?></p>

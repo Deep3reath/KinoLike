@@ -113,14 +113,15 @@ class FilmsController extends Controller
     public function actionUpdate($id)
     {
         $film = $this->findModel($id);
-        if ($film->load($response = (Yii::$app->request->post()))) {
-            var_dump(Yii::$app->db->createCommand()->delete('genre', [
+        if ($film->load($response = Yii::$app->request->post())) {
+            Yii::$app->db->createCommand()->delete('genre', [
                 'id_film' => $film->id,
-            ])->execute());
+            ])->execute();
             $film->file = UploadedFile::getInstance($film, 'file');
             $idImg = mt_rand(1, 1000);
             $film->img = 'upload/films/' .$idImg . md5($film->file->name) . '.' .$film->file->extension;
             $film->save();
+
             if(!empty($film->file))
                 $film->file->saveAs($film->img);
             foreach ($response['Films']['genres'] as $genre):

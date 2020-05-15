@@ -17,10 +17,11 @@ use yii\web\AssetBundle;
  */
 class AppAsset extends AssetBundle
 {
-    public $basePath = '@webroot';
+    public $basePath = '@web';
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        'css/profile.css',
     ];
     public $js = [
     ];

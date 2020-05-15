@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+* {font-family: 'Noto Sans', sans-serif;}
+.header-container {
+    background: #3F3F3F;
+    height: 60px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16);
+}
+
+
+.viewed__film-img {
+    width: 72px;
+    height: 112px;
+    border-radius: 5px;
+    margin-left: 30px;
+    margin-top: 15px;
+}
+
+.navbar-brand {
+    margin-top: 5px;
+}
+#w1 > li {
+    margin-top: 6px;
+}
+
+#w1 > li > a {
+    display: flex;
+    background: #FFFFFF;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 14px;
+    height: 44px;
+    line-height: 15px;
+    color: #FF8947;
+}
+.logout {
+    display: flex;
+    height: 44px;
+}
+#w1 > li > a:hover {
+    background: #FF8947;
+    color: #FFFFFF;
+}
+#w1 > li > a:active {
+    background: #FF8947;
+    color: #FFFFFF;
+}
+#w1 > li > a:focus {
+    background: #FF8947;
+    color: #FFFFFF;
+}
+#w1 li:not(:nth-child(1)) {margin-left: 10px;}
+.viewed__item-text h5{
+    color: #000000;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    margin-left: -125px;
+}
+.viewed__item-text p {
+    color: #A0A0A0;
+    font-size: 14px;
+    line-height: 19px;
+}
+.viewed__item-text {
+    margin-left: 40px;
+}
+.genre {
+    display: flex;
+    flex-direction: row;
+    height: 35px;
+}
+
+.btn-like {
+    background: #FFFFFF;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 15px;
+    color: #FF8947;
+}
+.btn-like:hover {
+    background: #FF8947;
+    color: #FFFFFF;
+}
+.btn-like:active {
+    background: #FF8947;
+    color: #FFFFFF;
+}
+.btn-like:focus {
+    background: #FF8947;
+    color: #FFFFFF;
+}
+
+.genre p {
+    order: 0;
+    align-self: center;
+    border: 1px solid #FF8947;
+    border-radius: 50px;
+    padding: 0 20px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 32px;
+    font-variant: small-caps;
+    color: #FF8947;
+}
+
+.avatar {
+    width: 140px;
+    object-fit: cover;
+}
+.logotype {
+    width: 120px;
+    height: 40px;
+    margin-top: -10px;
+}
+.profile__container {
+    height: 1562px;
+}
+
+.container-main {
+    height: 1562px;
+}
+
+.profile__header {
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 49px;
+    color: black;
+}
+.profile__username {
+    font-size: 14px;
+    line-height: 19px;
+    color: #A0A0A0;
+}
+
+.profile__avatar-container {
+    width: 100px; height: 100px; margin: 0 auto; overflow: hidden; border-radius: 50%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    margin-bottom: 30px;
+}
+.profile__viewed-container {
+    height: 140px;
+    display: flex;
+}
+.viewed__wrapper {
+    display: flex;
+    flex-flow: row;
+}
+.viewed__header {
+    user-select: none;
+    width: 350px;
+    height: auto;
+    border-right: 1px solid lightgray;
+}
+.viewed__header h4 {
+    font-weight: bold;
+    font-size: 16px;
+    display: flex;
+    margin-left: 105px;
+    line-height: 105px;
+    font-variant: small-caps;
+
+    color: #000000;
+}
+.viewed__item {
+    margin-left: 20px;
+    display: flex;
+    flex-flow: row;
+}
+.viewed__item-links {
+    display: flex;
+    flex-flow: column;
+}
+.viewed__item-links a:nth-child(2) {
+    margin-top: 10px;
+}
+.profile__simple_statistic-container {
+    margin-bottom: 70px;
+    display: flex;
+    flex-flow: row;
+}
+.simple_statistic__item:not(:nth-child(1)) {margin-left: 144px;}
+.profile__simple_statistic-container {padding: 0 148px;}
+.simple_statistic__item h5 {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: bold;
+}
+.simple_statistic__item p {
+    font-size: 14px;
+    line-height: 19px;
+    color: #A0A0A0;
+}
+.information {display: flex; flex-direction: row;}
+.information p:nth-child(2) {margin-left: 10px;}
+.genres-template {display: flex; margin-top: 20px;}
+.genre:not(:nth-child(1)) {margin-left: 5px}
+.viewed__item-links {margin-left: 150px;}
+.profile__gosus-container h4 {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    /* identical to box height */
+    text-align: center;
+    color: #000000;
+}
+.profile__gosus-container p {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: center;
+    font-variant: small-caps;
+
+    color: #202020;
+}

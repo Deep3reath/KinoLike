@@ -26,6 +26,7 @@ use Yii;
  */
 class Films extends \yii\db\ActiveRecord
 {
+    public $genres;
     public $file;
     /**
      * {@inheritdoc}

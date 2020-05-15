@@ -53,6 +53,16 @@ class Genres extends \yii\db\ActiveRecord
         return $this->hasMany(Genre::className(), ['id_genres' => 'id']);
     }
 
+    public function getGenresFilm($id_film)
+    {
+        $genre = new Genre();
+        $genres = new Genres();
+        $temp = [];
+        foreach ($genre->find()->where(['id_film' => $id_film])->all() as $line) {
+            array_push($temp, $genres->findOne(['id'=>$line->id_genres])->title);
+        }
+        return $temp;
+    }
 
     public static function getGenresList($id_film = null)
     {
