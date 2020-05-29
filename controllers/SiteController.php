@@ -37,45 +37,7 @@ class SiteController extends Controller
     {
 
         return (isset(Yii::$app->user->identity->id_role) and Yii::$app->user->identity->id_role  == 5 ) ?
-            $this->redirect('/site/banned') : $this->render('index');
+            $this->redirect('/banned') : $this->redirect('/film-page');
     }
 
-    public function actionBanned()
-    {
-        return $this->render('banned');
-    }
-
-    /**
-     * Login action.
-     *
-     * @return Response|string
-     */
-
-    /**
-     * Displays contact page.
-     *
-     * @return Response|string
-     */
-    public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionAbout()
-    {
-        return $this->render('about');
-    }
 }

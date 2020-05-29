@@ -29,7 +29,14 @@ class m200417_054723_create_user_table extends Migration
             'id',
             'CASCADE'
         );
-
+        $this->insert('{{%user}}', [
+            'id_role' => 1,
+            'email' => 'admin@email.example',
+            'name' => 'Админ',
+            'username' => 'admin',
+            'password'=>md5('admin'),
+            'avatar'=>'admin.png'
+        ]);
     }
 
     /**

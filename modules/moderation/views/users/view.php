@@ -31,7 +31,7 @@ foreach ($users->getRolesList() as $item) {
                 'label' => 'Аватар',
                 'format' => 'raw',
                 'value' => function ($data) {
-                    return Html::img(('@' . $data->avatar), [
+                    return Html::img(('/upload/avatars/' . $data->avatar), [
                         'alt' => $data->avatar,
                         'style' => 'width:100px;'
                     ]);

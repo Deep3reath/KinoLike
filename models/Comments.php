@@ -13,6 +13,7 @@ use Yii;
  * @property int|null $review
  * @property int|null $id_user
  * @property int|null $id_film
+ * @property int|null $type
  *
  * @property Films $film
  * @property User $user
@@ -33,6 +34,7 @@ class Comments extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['review', 'type', 'text'], 'required'],
             [['date'], 'safe'],
             [['review', 'id_user', 'id_film'], 'integer'],
             [['text'], 'string', 'max' => 127],
@@ -53,6 +55,7 @@ class Comments extends \yii\db\ActiveRecord
             'review' => 'Тип',
             'id_user' => 'Пользователь',
             'id_film' => 'Фильм ',
+            'type' => 'Мнение',
         ];
     }
 

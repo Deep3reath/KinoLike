@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => 'Аватар',
                 'format' => 'raw',
                 'value' => function ($data) {
-                    return Html::img(('@' . $data->avatar), [
+                    return Html::img(('/upload/avatars/' . $data->avatar), [
                         'alt' => $data->avatar,
                         'style' => 'width:100px;'
                     ]);
@@ -57,7 +57,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="form-group">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
-
     </div>
 
 

@@ -26,6 +26,7 @@ use yii\web\IdentityInterface;
  */
 class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
+    public $file;
     /**
      * @var mixed|null
      */

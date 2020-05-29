@@ -2,6 +2,7 @@
 
 namespace app\modules\administration\controllers;
 
+use app\models\Comments;
 use app\models\Roles;
 use Yii;
 use app\models\User;

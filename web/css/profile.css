@@ -19,7 +19,7 @@
     margin-top: 5px;
 }
 #w1 > li {
-    margin-top: 6px;
+    margin-top: 11px;
 }
 
 #w1 > li > a {
@@ -29,13 +29,9 @@
     border-radius: 5px;
     font-weight: 500;
     font-size: 14px;
-    height: 44px;
-    line-height: 15px;
+    height: 35px;
+    line-height: 5px;
     color: #FF8947;
-}
-.logout {
-    display: flex;
-    height: 44px;
 }
 #w1 > li > a:hover {
     background: #FF8947;
@@ -50,6 +46,80 @@
     color: #FFFFFF;
 }
 #w1 li:not(:nth-child(1)) {margin-left: 10px;}
+.viewed__item-text h5{
+    color: #000000;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    margin-left: -125px;
+}
+#w2 > li {
+    margin-top: 6px;
+}
+
+
+
+#w2 > li > a {
+    display: flex;
+    background: #FFFFFF;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 14px;
+    height: 35px;
+    line-height: 5px;
+    color: #FF8947;
+}
+
+#w2 > li > a:hover {
+    background: #FF8947;
+    color: #FFFFFF;
+}
+#w2 > li > a:active {
+    background: #FF8947;
+    color: #FFFFFF;
+}
+#w2 > li > a:focus {
+    background: #FF8947;
+    color: #FFFFFF;
+}
+#w2 li:not(:nth-child(1)) {margin-left: 10px;}
+#w3 > li {
+    margin-top: 6px;
+}
+
+#w3 > li {
+    margin-top: 5px;
+}
+#w3 > li > a {
+    display: flex;
+    background: #FFFFFF;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 14px;
+    height: 35px;
+    line-height: 5px;
+    color: #FF8947;
+}
+#w3 > li > a:hover {
+    background: #FF8947;
+    color: #FFFFFF;
+}
+#w3 > li > a:active {
+    background: #FF8947;
+    color: #FFFFFF;
+}
+#w3 > li > a:focus {
+    background: #FF8947;
+    color: #FFFFFF;
+}
+textarea {resize: none}
+.adm-area {margin-left: 0; width: 1140px;}
+#films-description {margin: 0;}
+#w3 li:not(:nth-child(1)) {margin-left: 10px;}
+#w3 {margin-top: 6px;}
+ul[id="w2"] { margin-top: 5px;}
 .viewed__item-text h5{
     color: #000000;
     font-weight: bold;
@@ -120,7 +190,7 @@
 }
 
 .container-main {
-    height: 1562px;
+    min-height: 1562px;
 }
 
 .profile__header {
@@ -214,4 +284,9 @@
     font-variant: small-caps;
 
     color: #202020;
+}
+.logout {
+    display: flex;
+    height: 35px;
+    line-height: 0;
 }

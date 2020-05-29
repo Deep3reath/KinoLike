@@ -22,6 +22,9 @@ $config = [
         'profile' => [
             'class' => 'app\modules\profile\Module',
         ],
+        'film-page' => [
+            'class' => 'app\modules\filmPage\Module',
+        ],
     ],
     'language' => 'ru',
     'components' => [

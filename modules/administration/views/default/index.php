@@ -7,7 +7,7 @@ use yii\helpers\Html;
 <div class="text-center container">
     <h2>Добро пожаловать, Администратор</h2>
     <div style="width: 100px; height: 100px; margin: 0 auto; overflow: hidden; border-radius: 50%;">
-    <?= Html::img('@'.Yii::$app->user->identity->avatar, ['style' => 'width: 150px;object-fit: cover;']); ?>
+    <?= Html::img('upload/avatars/'.Yii::$app->user->identity->avatar, ['style' => 'width: 150px;object-fit: cover;']); ?>
     </div>
     <p>Выберите, что хотите просмотреть</p>
 <div class="row">

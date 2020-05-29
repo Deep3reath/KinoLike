@@ -36,6 +36,7 @@ use yii\widgets\ActiveForm;
         'pluginOptions' => [
             'format' => 'yyyy-mm-dd',
             'startDate' => '1900.01.01.',
+            'maxDate' => '+2d',
             'endDate' => date('Y-m-d'),
         ]
     ]);?>
